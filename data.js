@@ -1,4 +1,4 @@
-const SolarSystemData = [
+export const CyclingData = [
 	{
 		name: `Giant TCR Advanced SL 0`,
 		data: `Giant’s premier race bike gets a full redesign for model year 2021. The frame is 140 grams lighter, which helps keep the top-of-the-line model shown here at just 14.5 pounds (size large)—impressive for a bike with a power meter, disc brakes, and 42mm-deep tubeless-ready wheels. And even though this version weighs less, Giant added some aerodynamic tuning to reduce drag for greater efficiency. The new TCR embraces the trend toward wider tires with clearance for up to 32mm-wide rubber. The build reflects the price: SRAM Red eTap AXS with power meter, carbon bar and stem, and a Cadex (a Giant brand) wheelset with carbon rims and carbon spokes. On the road, this bike is very quick and handles extremely well.`

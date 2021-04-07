@@ -32,6 +32,7 @@ class Bycicle{
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${slicedName.replace(/\s+/g, '')}" aria-expanded="false" aria-controls="collapse${slicedName.replace(/\s+/g, '')}">
             <strong>${this.name}</strong>
           </button>
+          <img src="./images/${this.name.replace(/\s+/g, '')}".jpg width="20" height="20">
         </h2>
         <div id="collapse${slicedName.replace(/\s+/g, '')}" class="accordion-collapse collapse collapse" aria-labelledby="heading${slicedName.replace(/\s+/g, '')}" data-bs-parent="#accordionBycycle">
           <div class="accordion-body">

@@ -1,15 +1,20 @@
 import {CyclingData} from "./data.js"
 
-const accordionCyclingModels = document.querySelector('#accordionBycycle')
+const accordionCyclingModels = document.querySelector('#accordionBycycle');
+const pipelineCyclingModels = document.querySelector('#renderBycicle');
+
 
 class CyclingModels{
     static createBycicle(arr){
         let bycicles = arr
             .map(model=> new Bycicle(model))
-            .map(model=>model.renderBycicle())
+
+        let byciclesAccordion=bycicles.map(model=>model.renderBycicle())
             .join('');
             
-            accordionCyclingModels.innerHTML = bycicles;
+            bycicles.map(bicycle=>bicycle.renderPipeline());
+
+            accordionCyclingModels.innerHTML = byciclesAccordion;
     }
 }
 
@@ -41,6 +46,33 @@ class Bycicle{
         </div>
       </div>`
     }
+
+    renderPipeline(){ 
+        let icon = document.createElement('img');
+        
+        icon.id = `render__${this.name.replace(/\s+/g, '')}`;
+        icon.src = `images/${this.name.replace(/\s+/g, '')}.jpg`;
+        icon.alt = this.name;
+        icon.width = 50;
+        icon.height = 30;
+        icon.setAttribute('data-bs-toggle', 'tooltip');
+
+        icon.addEventListener('click',()=>{
+            let name = this.name;
+            let slicedName = name.slice(0,15);
+
+            let btn = document.querySelector(`button[aria-controls="collapse${slicedName.replace(/\s+/g, '')}"`);
+            btn.click();
+        })
+        
+        pipelineCyclingModels.append(icon)
+
+    }
 }
 
-CyclingModels.createBycicle(CyclingData)
+
+
+
+
+CyclingModels.createBycicle(CyclingData);
+// PipelineModels.createPipeline(CyclingData)

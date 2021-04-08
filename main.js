@@ -54,7 +54,7 @@ class Bycicle{
         icon.src = `images/${this.name.replace(/\s+/g, '')}.jpg`;
         icon.alt = this.name;
         icon.width = 50;
-        icon.height = 30;
+
         icon.setAttribute('data-bs-toggle', 'tooltip');
 
         icon.addEventListener('click',()=>{
@@ -64,7 +64,7 @@ class Bycicle{
             let btn = document.querySelector(`button[aria-controls="collapse${slicedName.replace(/\s+/g, '')}"`);
             btn.click();
         })
-        
+
         pipelineCyclingModels.append(icon)
 
     }

@@ -3,11 +3,15 @@ import {CyclingData} from "./data.js"
 const accordionCyclingModels = document.querySelector('#accordionBycycle');
 const pipelineCyclingModels = document.querySelector('#renderBycicle');
 
+const Bike = {
+    Pinarello: data => new Pinarello(data)
+}
+
 
 class CyclingModels{
     static createBycicle(arr){
         let bycicles = arr
-            .map(model=> new Bycicle(model))
+            .map(model=> Bike[model.name] ? Bike[model.name](model) : new Bycicle(model))
 
         let byciclesAccordion=bycicles.map(model=>model.renderBycicle())
             .join('');
@@ -71,8 +75,37 @@ class Bycicle{
 }
 
 
+class Pinarello extends Bycicle {
+    constructor(model){
+        super(model)
+    }
+
+    renderPipeline(){ 
+        let icon = document.createElement('img');
+        
+        icon.id = `render__${this.name.replace(/\s+/g, '')}`;
+        icon.src = `images/${this.name.replace(/\s+/g, '')}.jpg`;
+        icon.alt = this.name;
+        icon.width = 50;
+
+        icon.setAttribute('data-bs-toggle', 'tooltip');
+
+        icon.addEventListener('click',()=>{
+            let name = this.name;
+            let slicedName = name.slice(0,15);
+
+            let btn = document.querySelector(`button[aria-controls="collapse${slicedName.replace(/\s+/g, '')}"`);
+            alert("Hello")
+            btn.click();
+        })
+
+        pipelineCyclingModels.append(icon)
+
+    }
+
+}
+
 
 
 
 CyclingModels.createBycicle(CyclingData);
-// PipelineModels.createPipeline(CyclingData)
